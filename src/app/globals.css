@@ -4,6 +4,14 @@
 
 :root {
   --foreground: #fafafa;
+  --background: #0D0D0D;
+  --box-bg: #191919;
+  --box-border: #474747;
+  --box-h: 640px;
+  --box-w: 480px;
+  --box-min-w: 360px;
+
+  background: var(--background);
 }
 
 body {
