@@ -10,11 +10,18 @@
   --box-h: 640px;
   --box-w: 480px;
   --box-min-w: 360px;
+  --tab-selected: #302F2F;
+  --tab-font-size: 13px;
+  --tab-text: #757575;
+  --tab-selected-text: #fafafa;
 
   background: var(--background);
 }
 
 body {
   color: var(--foreground);
-  background: url("/blob.webp") center;
+}
+
+main {
+  min-height: 100svh;
 }
