@@ -68,7 +68,7 @@ export default function UserRow({ user }: { user: User }) {
   return (
     <div
       ref={rowRef}
-      className="w-full flex gap-3 items-center px-2 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] rounded-[4px] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)] hover:bg-[var(--row-hover)] group"
+      className="w-full flex gap-3 items-center px-2 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] rounded-[4px] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)] md:hover:bg-[var(--row-hover)] group"
       tabIndex={0}
       onKeyDown={handleKeyDown}
       role="checkbox"
