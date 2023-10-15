@@ -7,12 +7,11 @@ export default async function getUsers() {
   }
 
   // Artificial delay of 1 second
-  // await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const result = await res.json();
   const data = Object.keys(result.users).map((key) => ({
     id: key,
-    admin: false,
     ...result.users[key],
   }));
 
