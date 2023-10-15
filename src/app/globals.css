@@ -4,16 +4,20 @@
 
 :root {
   --foreground: #fafafa;
+  --foreground-alt: #757575;
   --background: #0D0D0D;
   --box-bg: #191919;
   --box-border: #474747;
-  --box-h: 640px;
   --box-w: 480px;
   --box-min-w: 360px;
   --tab-selected: #302F2F;
   --tab-font-size: 13px;
-  --tab-text: #757575;
+  --tab-text-color: #757575;
   --tab-selected-text: #fafafa;
+  --row-hover: #1E1E1E;
+  --admin-label-bg: #382525;
+  --admin-label-text: #ED6D68;
+  --admin-empty-box: #212020;
 
   background: var(--background);
 }
