@@ -7,6 +7,8 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import clsx from "clsx";
+
+// Components
 import AdminTag from "./AdminTag";
 
 // Components
@@ -24,8 +26,8 @@ export default function UserRow({ user }: { user: User }) {
   const fullName = `${user.first} ${user.last}`;
   const avatarAltText = `Avatar for ${fullName}`;
   const ariaLabelText = values.adminIds.includes(user.id)
-    ? `Remove admin role from ${fullName}`
-    : `Add admin role to ${fullName}`;
+    ? `${fullName}. Untick to remove admin role`
+    : `${fullName}. Tick to add admin role`;
 
   function toggleAdmin() {
     setAnimate(true);

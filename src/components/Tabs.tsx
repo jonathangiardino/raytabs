@@ -1,7 +1,7 @@
 "use client";
 
 // imports
-import { KeyboardEvent } from "react";
+import { KeyboardEvent, useEffect } from "react";
 
 // Dependencies
 import { useSearchParams, useRouter } from "next/navigation";
@@ -36,9 +36,14 @@ export default function Tabs({ users }: { users: User[] }) {
     }
   }
 
+  useEffect(() => {
+    router.prefetch(`?tab=members`);
+    router.prefetch(`?tab=groups`);
+  }, [router]);
+
   return (
     <Root
-      className="flex flex-col items-start w-full h-full rounded-md animate-fade-in"
+      className="flex flex-col items-start w-full h-full rounded-md"
       defaultValue={tab || "members"}
     >
       <List
