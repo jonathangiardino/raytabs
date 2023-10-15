@@ -49,17 +49,19 @@ export default function UserRow({ user }: { user: User }) {
 
   function handleRowFocus() {
     if (tabId && tabId === "groups") {
+      const prev = rowRef.current?.previousElementSibling;
+      const next = rowRef.current?.nextElementSibling;
+      const parent = rowRef.current?.parentElement?.parentElement;
+
       switch (true) {
-        case !!rowRef.current?.nextElementSibling:
-          (rowRef.current?.nextElementSibling as HTMLDivElement).focus();
+        case !!next:
+          (next as HTMLDivElement).focus();
           break;
-        case !!rowRef.current?.previousElementSibling:
-          (rowRef.current?.previousElementSibling as HTMLDivElement).focus();
+        case !!prev:
+          (prev as HTMLDivElement).focus();
           break;
         default:
-          (
-            rowRef.current?.parentElement?.parentElement as HTMLDivElement
-          ).focus();
+          (parent as HTMLDivElement).focus();
           break;
       }
     }

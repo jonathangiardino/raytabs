@@ -5,6 +5,7 @@
 :root {
   --foreground: #fafafa;
   --foreground-alt: #757575;
+  --foreground-link: #bdbdbd;
   --background: #0d0d0d;
   --box-bg: #191919;
   --box-border: #474747;
