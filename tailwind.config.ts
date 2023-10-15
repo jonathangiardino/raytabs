@@ -13,7 +13,7 @@ const config: Config = {
       },
       animation: {
         "slide-right": "slideRightAndBack 0.3s ease-in-out",
-        "fade-in": "fadeIn 0.3s ease-in-out",
+        "fade-in": "fadeIn 0.15s ease-in-out",
       },
       keyframes: {
         slideRightAndBack: {

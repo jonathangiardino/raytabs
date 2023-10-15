@@ -7,12 +7,11 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import clsx from "clsx";
-
-// Components
-import AdminTag from "./AdminTag";
+import { Cross2Icon, PlusIcon } from "@radix-ui/react-icons";
 
 // Components
 import { useAdminStore } from "@/adminStore";
+import AdminButton from "./AdminButton";
 
 export default function UserRow({ user }: { user: User }) {
   const rowRef = useRef<HTMLDivElement>(null);
@@ -43,7 +42,7 @@ export default function UserRow({ user }: { user: User }) {
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.key === " ") {
       toggleAdmin();
     }
   }
@@ -69,9 +68,8 @@ export default function UserRow({ user }: { user: User }) {
   return (
     <div
       ref={rowRef}
-      className="w-full flex gap-3 items-center px-2 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] rounded-[4px] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)] hover:bg-[var(--row-hover)] cursor-pointer"
+      className="w-full flex gap-3 items-center px-2 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] rounded-[4px] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)] hover:bg-[var(--row-hover)] group"
       tabIndex={0}
-      onClick={handleCheckboxChange}
       onKeyDown={handleKeyDown}
       role="checkbox"
       aria-checked={values.adminIds.includes(user.id)}
@@ -106,7 +104,11 @@ export default function UserRow({ user }: { user: User }) {
           {user.role}
         </span>
       </div>
-      {values.adminIds.includes(user.id) ? <AdminTag /> : null}
+
+      <AdminButton
+        handleCheckboxChange={handleCheckboxChange}
+        isAdmin={values.adminIds.includes(user.id)}
+      />
     </div>
   );
 }

@@ -5,19 +5,20 @@
 :root {
   --foreground: #fafafa;
   --foreground-alt: #757575;
-  --background: #0D0D0D;
+  --background: #0d0d0d;
   --box-bg: #191919;
   --box-border: #474747;
   --box-w: 480px;
   --box-min-w: 360px;
-  --tab-selected: #302F2F;
+  --tab-selected: #302f2f;
   --tab-font-size: 13px;
   --tab-text-color: #757575;
   --tab-selected-text: #fafafa;
-  --row-hover: #1E1E1E;
+  --row-hover: #1e1e1e;
   --admin-label-bg: #382525;
-  --admin-label-text: #ED6D68;
+  --admin-label-text: #ed6d68;
   --admin-empty-box: #212020;
+  --admin-set-btn: #282828;
 
   background: var(--background);
 }

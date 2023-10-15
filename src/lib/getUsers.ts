@@ -7,7 +7,7 @@ export default async function getUsers() {
   }
 
   // Artificial delay of 2.5 seconds
-  await new Promise((resolve) => setTimeout(resolve, 2500));
+  // await new Promise((resolve) => setTimeout(resolve, 2500));
 
   const result = await res.json();
   const data = Object.keys(result.users).map((key) => ({
