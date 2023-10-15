@@ -37,9 +37,9 @@ export default function Tabs({ users }: { users: User[] }) {
   }
 
   useEffect(() => {
-    router.prefetch(`?tab=members`);
-    router.prefetch(`?tab=groups`);
-  }, [router]);
+    if (tab === "members") router.prefetch(`?tab=groups`);
+    if (tab === "groups") router.prefetch(`?tab=members`);
+  }, [router, tab]);
 
   return (
     <Root
