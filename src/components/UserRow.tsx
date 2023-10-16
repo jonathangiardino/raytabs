@@ -7,14 +7,13 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import clsx from "clsx";
-import { Cross2Icon, PlusIcon } from "@radix-ui/react-icons";
 
 // Components
 import { useAdminStore } from "@/adminStore";
 import AdminButton from "./AdminButton";
 
 export default function UserRow({ user }: { user: User }) {
-  const rowRef = useRef<HTMLDivElement>(null);
+  const rowRef = useRef<HTMLLIElement>(null);
 
   const searchParams = useSearchParams();
   const tabId = searchParams.get("tab");
@@ -24,16 +23,12 @@ export default function UserRow({ user }: { user: User }) {
 
   const fullName = `${user.first} ${user.last}`;
   const avatarAltText = `Avatar for ${fullName}`;
-  const ariaLabelText = values.adminIds.includes(user.id)
-    ? `${fullName}. Untick to remove admin role`
-    : `${fullName}. Tick to add admin role`;
 
   function toggleAdmin() {
     setAnimate(true);
     setTimeout(() => {
       handleRowFocus();
       actions.toggleAdminId(user.id);
-      document.getElementById(user.id)?.focus();
     }, 400);
   }
 
@@ -41,48 +36,38 @@ export default function UserRow({ user }: { user: User }) {
     toggleAdmin();
   }
 
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "Enter" || event.key === " ") {
-      toggleAdmin();
-    }
-  }
-
   function handleRowFocus() {
     if (tabId && tabId === "groups") {
       const prev = rowRef.current?.previousElementSibling;
       const next = rowRef.current?.nextElementSibling;
-      const parent = rowRef.current?.parentElement?.parentElement;
+      const current = rowRef.current;
 
       switch (true) {
         case !!next:
-          (next as HTMLDivElement).focus();
+          (next as HTMLLIElement).focus();
           break;
         case !!prev:
-          (prev as HTMLDivElement).focus();
+          (prev as HTMLLIElement).focus();
           break;
         default:
-          (parent as HTMLDivElement).focus();
+          (current as HTMLLIElement).focus();
           break;
       }
     }
   }
 
   return (
-    <div
+    <li
       ref={rowRef}
-      className="w-full flex gap-3 items-center px-2 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] rounded-[4px] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)] md:hover:bg-[var(--row-hover)] group"
+      role="listitem"
       tabIndex={0}
-      onKeyDown={handleKeyDown}
-      role="checkbox"
-      aria-checked={values.adminIds.includes(user.id)}
-      aria-label={ariaLabelText}
+      aria-label={fullName}
+      className="w-full flex gap-3 items-center px-2 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] rounded-[4px] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)] md:hover:bg-[var(--row-hover)] group"
     >
       <div
         className={clsx(
           "h-[32px] w-[32px] rounded-full transition-opacity ease-out",
-          {
-            "animate-slide-right opacity-50": animate,
-          }
+          animate && "animate-slide-right opacity-50"
         )}
         onAnimationEnd={() => setAnimate(false)}
       >
@@ -96,9 +81,10 @@ export default function UserRow({ user }: { user: User }) {
         />
       </div>
       <div
-        className={clsx("flex flex-col transition-opacity ease-out  ", {
-          "animate-slide-right opacity-50": animate,
-        })}
+        className={clsx(
+          "flex flex-col transition-opacity ease-out  ",
+          animate && "animate-slide-right opacity-50"
+        )}
         onAnimationEnd={() => setAnimate(false)}
       >
         <span className="select-none text-[14px] font-medium">{fullName}</span>
@@ -111,6 +97,6 @@ export default function UserRow({ user }: { user: User }) {
         handleCheckboxChange={handleCheckboxChange}
         isAdmin={values.adminIds.includes(user.id)}
       />
-    </div>
+    </li>
   );
 }
