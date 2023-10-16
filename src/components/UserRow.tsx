@@ -1,8 +1,5 @@
 "use client";
 
-// Imports
-import { useRef, useState } from "react";
-
 // Dependencies
 import Image from "next/image";
 import { PersonIcon } from "@radix-ui/react-icons";
@@ -19,8 +16,6 @@ export default function UserRow({
   user: User;
   staticRow?: boolean;
 }) {
-  const rowRef = useRef<HTMLLIElement>(null);
-
   const [values, actions] = useAdminStore();
 
   const isAdmin = values.adminIds.includes(user.id);
@@ -37,7 +32,6 @@ export default function UserRow({
 
   return (
     <li
-      ref={rowRef}
       role="listitem"
       tabIndex={0}
       aria-label={`${fullName}. ${user.role}.`}
