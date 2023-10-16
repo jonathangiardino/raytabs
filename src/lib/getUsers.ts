@@ -1,6 +1,8 @@
 export default async function getUsers() {
-  // Artificial delay of 1 seconds
+  // No Delay
   // const URL = "https://raycast-test-attachments.s3.amazonaws.com/data.json";
+
+  // Artificial delay of 1 seconds
   const delayedURL =
     "https://app.requestly.io/delay/1000/https://raycast-test-attachments.s3.amazonaws.com/data.json";
 
