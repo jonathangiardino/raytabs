@@ -15,14 +15,12 @@ export default function UserList({ users }: { users: User[] }) {
 
   const admins = [...users]
     .filter((user) => values.adminIds.includes(user.id))
-    .sort((a, b) => {
-      const aIndex = values.adminIds.indexOf(a.id);
-      const bIndex = values.adminIds.indexOf(b.id);
-      return aIndex - bIndex;
-    });
+    .sort(
+      (a, b) => values.adminIds.indexOf(a.id) - values.adminIds.indexOf(b.id)
+    );
 
   const membersOnly = users.filter(
-    (user) => !values.adminIds.includes(user.id)
+    (user) => !values.adminIds.includes(user.id)  
   );
 
   const adminList = admins.map((user) => <UserRow key={user.id} user={user} />);
@@ -49,7 +47,7 @@ export default function UserList({ users }: { users: User[] }) {
 
   const membersOnlyList = membersOnly.map((user) => (
     <UserRow key={user.id} user={user} />
-  )); 
+  ));
 
   if (currentTab === "groups") {
     return (
