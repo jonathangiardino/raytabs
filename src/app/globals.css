@@ -31,3 +31,24 @@ body {
 main {
   min-height: 100svh;
 }
+
+.button-focus {
+  @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)]
+focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)];
+}
+
+.link-focus {
+  @apply focus-visible:text-[var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--foreground)] focus-visible:ring-offset-[0px] focus-visible:ring-offset-transparent;
+}
+
+.tab-focus {
+  @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] focus-visible:rounded-[2px] data-[state=active]:bg-[var(--tab-selected)] data-[state=active]:text-[var(--tab-selected-text)];
+}
+
+.empty-state-focus {
+  @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)]
+}
+
+.listitem-focus {
+  @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] rounded-[4px] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)] md:hover:bg-[var(--row-hover)] 
+}

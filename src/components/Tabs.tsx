@@ -54,7 +54,7 @@ export default function Tabs({ users }: { users: User[] }) {
         {tabs.map((tab) => (
           <Trigger
             key={tab.id}
-            className="flex justify-center items-center flex-1 rounded-[4px] focus-visible:rounded-[2px] px-1 py-2 text-sm text-[var(--tab-text-color)] font-medium transition-colors ease-out data-[state=active]:bg-[var(--tab-selected)] data-[state=active]:text-[var(--tab-selected-text)] hover:text-[var(--tab-selected-text)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)]"
+            className="flex justify-center items-center flex-1 rounded-[4px] px-1 py-2 text-sm text-[var(--tab-text-color)] font-medium transition-colors ease-out hover:text-[var(--tab-selected-text)] tab-focus"
             value={tab.id}
             onClick={() => updateQueryParams(tab.id)}
             onKeyUp={(event) => handleKeyUp(event, tab.id)}

@@ -31,7 +31,7 @@ export default function UserList({ users }: { users: User[] }) {
     <li
       tabIndex={0}
       role="listitem"
-      className="mx-2 p-4 flex justify-center items-center bg-[var(--admin-empty-box)] rounded-[4px] text-xs text-[var(--tab-text-color)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)]"
+      className="mx-2 p-4 flex justify-center items-center bg-[var(--admin-empty-box)] rounded-[4px] text-xs text-[var(--tab-text-color)] empty-state-focus"
     >
       No admin members available
     </li>
@@ -41,7 +41,7 @@ export default function UserList({ users }: { users: User[] }) {
     <li
       tabIndex={0}
       role="listitem"
-      className="mx-2 mb-2 p-4 flex justify-center items-center bg-[var(--admin-empty-box)] rounded-[4px] text-xs text-[var(--tab-text-color)]"
+      className="mx-2 mb-2 p-4 flex justify-center items-center bg-[var(--admin-empty-box)] rounded-[4px] text-xs text-[var(--tab-text-color)] empty-state-focus"
     >
       No team members available
     </li>
