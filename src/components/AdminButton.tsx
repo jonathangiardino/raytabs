@@ -7,6 +7,7 @@ export default function AdminButton({
   handleCheckboxChange: () => void;
   isAdmin: boolean;
 }) {
+  
   return isAdmin ? (
     <button
       tabIndex={0}
@@ -14,9 +15,9 @@ export default function AdminButton({
       aria-checked={isAdmin}
       aria-label={"Untick to remove admin role"}
       onClick={handleCheckboxChange}
-      className="ml-auto flex gap-1 items-center bg-[var(--admin-label-bg)] md:hover:opacity-80 text-[11px] text-[var(--admin-label-text)] p-1 rounded-[2px] button-focus animate-fade-in"
+      className="ml-auto flex gap-1 items-center bg-[var(--admin-label-bg)] md:hover:opacity-80 text-[11px] text-[var(--admin-label-text)] px-2 py-1 rounded-[2px] animate-fade-in button-focus"
     >
-      <Cross2Icon height={13} width={13} />
+      Unset admin <Cross2Icon height={13} width={13} />
     </button>
   ) : (
     <button
@@ -25,9 +26,9 @@ export default function AdminButton({
       aria-label={"Tick to add admin role"}
       tabIndex={0}
       onClick={handleCheckboxChange}
-      className="flex gap-1 items-center ml-auto bg-[var(--admin-set-btn)] md:hover:opacity-80 text-[11px] p-1 rounded-[2px] button-focus animate-fade-in"
+      className="flex gap-1 items-center ml-auto bg-[var(--admin-set-btn)] md:hover:opacity-80 text-[11px] px-2 py-1 rounded-[2px] animate-fade-in button-focus"
     >
-      <PlusIcon height={13} width={13} />
+      Set admin <PlusIcon height={13} width={13} />
     </button>
   );
 }
