@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 // Components
 import { useAdminStore } from "@/adminStore";
 import UserRow from "./UserRow";
-import ListLegend from "./ListLegend";
+import UserListLegend from "./UserListLegend";
 
 export default function UserList({ users }: { users: User[] }) {
   const [values] = useAdminStore();
@@ -54,12 +54,12 @@ export default function UserList({ users }: { users: User[] }) {
     return (
       <div className="w-full space-y-1">
         <ul className="pb-2" aria-label="Admins list" role="listbox">
-          <ListLegend label="Admins" />
+          <UserListLegend label="Admins" />
           {admins.length ? adminList : emptyAdminState}
         </ul>
 
         <ul aria-label="Team members list" role="listbox">
-          <ListLegend label="Team members" />
+          <UserListLegend label="Team members" />
           {membersOnlyList.length ? membersOnlyList : emptyMembersState}
         </ul>
       </div>
@@ -69,7 +69,7 @@ export default function UserList({ users }: { users: User[] }) {
   return (
     <div className="w-full space-y-1">
       <ul aria-label="All team members list" role="listbox">
-        <ListLegend label="All team members" />
+        <UserListLegend label="All team members" />
         {users.map((user) => (
           <UserRow key={user.id} user={user} />
         ))}

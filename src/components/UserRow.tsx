@@ -7,7 +7,7 @@ import clsx from "clsx";
 
 // Components
 import { useAdminStore } from "@/adminStore";
-import AdminButton from "./AdminButton";
+import Button from "./Button";
 
 export default function UserRow({
   user,
@@ -77,10 +77,7 @@ export default function UserRow({
       </div>
 
       {!staticRow ? (
-        <AdminButton
-          handleCheckboxChange={handleCheckboxChange}
-          isAdmin={isAdmin}
-        />
+        <Button handleCheckboxChange={handleCheckboxChange} isAdmin={isAdmin} />
       ) : null}
     </li>
   );
