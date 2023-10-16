@@ -20,10 +20,8 @@ export default function UserList({ users }: { users: User[] }) {
     );
 
   const membersOnly = users.filter(
-    (user) => !values.adminIds.includes(user.id)  
+    (user) => !values.adminIds.includes(user.id)
   );
-
-  const adminList = admins.map((user) => <UserRow key={user.id} user={user} />);
 
   const emptyAdminState = (
     <li
@@ -45,8 +43,11 @@ export default function UserList({ users }: { users: User[] }) {
     </li>
   );
 
+  const adminList = admins.map((user) => (
+    <UserRow key={user.id} user={user} staticRow />
+  ));
   const membersOnlyList = membersOnly.map((user) => (
-    <UserRow key={user.id} user={user} />
+    <UserRow key={user.id} user={user} staticRow />
   ));
 
   if (currentTab === "groups") {
