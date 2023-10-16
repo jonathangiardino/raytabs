@@ -22,14 +22,12 @@ export default function UserRow({
   const rowRef = useRef<HTMLLIElement>(null);
 
   const [values, actions] = useAdminStore();
-  const [animate, setAnimate] = useState(false);
 
   const isAdmin = values.adminIds.includes(user.id);
   const fullName = `${user.first} ${user.last}`;
   const avatarAltText = `Avatar for ${fullName}`;
 
   function toggleAdmin() {
-    setAnimate(true);
     actions.toggleAdminId(user.id);
   }
 
@@ -63,7 +61,6 @@ export default function UserRow({
           "flex gap-3 items-center transition-transform ease-out",
           isAdmin ? "translate-x-[50px]" : "translate-x-[0px]"
         )}
-        // onAnimationEnd={() => setAnimate(false)}
       >
         <div className="h-[32px] w-[32px] rounded-full">
           <Image
