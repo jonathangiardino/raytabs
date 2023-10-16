@@ -40,7 +40,7 @@ export default function UserRow({
       ref={rowRef}
       role="listitem"
       tabIndex={0}
-      aria-label={fullName}
+      aria-label={`${fullName}. ${user.role}.`}
       className="w-full flex items-center px-2 py-1 group listitem-focus"
     >
       {isAdmin ? (
