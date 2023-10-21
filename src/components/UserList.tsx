@@ -24,7 +24,6 @@ const Item = ({ user, isAdmin, readonly }: UserListItemProps) => {
   const [, actions] = useStore();
 
   function toggleIsAdmin() {
-    console.log("toggleIsAdmin", user.id);
     actions.toggleAdminId(user.id);
   }
 
