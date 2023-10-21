@@ -51,7 +51,7 @@ export default function Tabs({ users }: { users: User[] }) {
       onValueChange={(value) => updateQueryParams(value)}
     >
       <List
-        className="w-full flex justify-between rounded-t-md mb-4"
+        className="w-full flex justify-between rounded-t-md mb-2"
         aria-label="Manage Members and Groups"
         loop
       >
