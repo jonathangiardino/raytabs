@@ -40,13 +40,13 @@ const Item = ({ user, isAdmin, readonly }: UserListItemProps) => {
     >
       {isAdmin ? (
         <div className="relative h-[32px] w-[32px] -mr-[32px] p-2 rounded-full">
-          <div className="absolute top-0 -right-4 w-8 h-8 rounded-full bg-[var(--admin-label-bg)] opacity-20 animate-fade-in" />
-          <div className="absolute top-0 -right-2 w-8 h-8 rounded-full bg-[var(--admin-label-bg)] opacity-50 animate-fade-in delay-100" />
-          <div className="absolute top-0 right-0 h-full w-full p-2 rounded-full bg-[var(--admin-label-bg)] animate-fade-in">
+          <div className="absolute top-0 -right-4 w-8 h-8 rounded-full bg-[var(--admin-icon)] opacity-20 animate-fade-in" />
+          <div className="absolute top-0 -right-2 w-8 h-8 rounded-full bg-[var(--admin-icon)] opacity-50 animate-fade-in delay-100" />
+          <div className="absolute top-0 right-0 h-full w-full p-2 rounded-full bg-[var(--admin-icon)] animate-fade-in">
             <PersonIcon
               width={16}
               height={16}
-              className="text-[var(--admin-label-text)]"
+              className="text-[var(--admin-icon-text)]"
             />
           </div>
         </div>

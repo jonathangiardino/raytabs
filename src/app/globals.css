@@ -20,6 +20,8 @@
   --admin-label-text: #ed6d68;
   --admin-empty-box: #212020;
   --admin-set-btn: #282828;
+  --admin-icon: #ac2989;
+  --admin-icon-text: #fafafa;
 
   background: var(--background);
 }
