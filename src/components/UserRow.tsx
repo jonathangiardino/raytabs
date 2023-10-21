@@ -6,7 +6,7 @@ import { PersonIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
 
 // Components
-import { useAdminStore } from "@/adminStore";
+import { useStore } from "@/store";
 import Button from "./Button";
 
 export default function UserRow({
@@ -16,7 +16,7 @@ export default function UserRow({
   user: User;
   staticRow?: boolean;
 }) {
-  const [values, actions] = useAdminStore();
+  const [values, actions] = useStore();
 
   const isAdmin = values.adminIds.includes(user.id);
   const fullName = `${user.first} ${user.last}`;

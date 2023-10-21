@@ -11,9 +11,13 @@ import { Root, Trigger, List, Content } from "@radix-ui/react-tabs";
 import UserList from "./UserList";
 
 // Store
-import { StoreProvider } from "@/store";
+import { useStore } from "@/store";
+
+// Utils
+import filteredUsers from "@/utils/filteredUsers";
 
 export default function Tabs({ users }: { users: User[] }) {
+  const [values] = useStore();
   const router = useRouter();
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab");
@@ -37,6 +41,9 @@ export default function Tabs({ users }: { users: User[] }) {
     if (tab === "groups") router.prefetch(`?tab=members`);
   }, [router, tab]);
 
+  const admins = filteredUsers(users, "admin", values.adminIds);
+  const regulars = filteredUsers(users, "regular", values.adminIds);
+
   return (
     <Root
       className="flex flex-col items-start w-full h-full rounded-md"
@@ -59,14 +66,51 @@ export default function Tabs({ users }: { users: User[] }) {
         ))}
       </List>
 
-      <StoreProvider>
-        <Content value="members" className="w-full space-y-1">
-          <UserList users={users} />
-        </Content>
-        <Content value="groups" className="w-full space-y-1">
-          <UserList users={users} readonly />
-        </Content>
-      </StoreProvider>
+      <Content value="members" className="w-full ">
+        <UserList title="Members">
+          {users.length ? (
+            users.map((user) => (
+              <UserList.Item
+                key={user.id}
+                user={user}
+                isAdmin={values.adminIds.includes(user.id)}
+              />
+            ))
+          ) : (
+            <UserList.Empty label="No users available" />
+          )}
+        </UserList>
+      </Content>
+      <Content value="groups" className="w-full ">
+        <UserList title="Admins">
+          {admins.length ? (
+            admins.map((user) => (
+              <UserList.Item
+                key={user.id}
+                user={user}
+                isAdmin={true}
+                readonly
+              />
+            ))
+          ) : (
+            <UserList.Empty label="No admins available" />
+          )}
+        </UserList>
+        <UserList title="Team">
+          {regulars.length ? (
+            regulars.map((user) => (
+              <UserList.Item
+                key={user.id}
+                user={user}
+                isAdmin={false}
+                readonly
+              />
+            ))
+          ) : (
+            <UserList.Empty label="No regular members available" />
+          )}
+        </UserList>
+      </Content>
     </Root>
   );
 }

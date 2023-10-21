@@ -6,3 +6,14 @@ interface User {
   avatar: string;
   admin?: boolean;
 }
+
+interface UserListProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+interface UserListItemProps {
+  user: User;
+  isAdmin: boolean;
+  readonly?: boolean;
+}

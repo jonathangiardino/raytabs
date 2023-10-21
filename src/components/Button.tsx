@@ -3,10 +3,10 @@ import { Cross2Icon, PlusIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
 
 export default function Button({
-  handleCheckboxChange,
   isAdmin,
+  toggleIsAdmin,
 }: {
-  handleCheckboxChange: () => void;
+  toggleIsAdmin: () => void;
   isAdmin: boolean;
 }) {
   const ariaLabel = isAdmin
@@ -14,12 +14,11 @@ export default function Button({
     : "Tick to add admin role";
 
   return (
-    <button
-      tabIndex={0}
+    <button 
       role="checkbox"
       aria-checked={isAdmin}
       aria-label={ariaLabel}
-      onClick={handleCheckboxChange}
+      onClick={toggleIsAdmin}
       className={clsx(
         "ml-auto flex gap-1 items-center md:hover:opacity-80 text-[11px] px-3 py-2 sm:px-2 sm:py-1 rounded-[2px] animate-fade-in button-focus",
         isAdmin
