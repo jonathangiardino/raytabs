@@ -2,7 +2,7 @@
 import getUsers from "@/lib/getUsers";
 
 // Components
-import Box from "@/components/Box";
+import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import Tabs from "@/components/Tabs";
 
@@ -11,9 +11,9 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col items-center justify-end bg-[var(--background)]">
-      <Box>
+      <Container>
         <Tabs users={users} />
-      </Box>
+      </Container>
       <Footer />
     </main>
   );

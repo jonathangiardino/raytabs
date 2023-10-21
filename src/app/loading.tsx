@@ -1,5 +1,5 @@
 // Components
-import Box from "@/components/Box";
+import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import Skeleton from "@/components/Skeleton";
 
@@ -8,9 +8,9 @@ export default function Loading() {
 
   return (
     <main className="flex flex-col items-center justify-end bg-[var(--background)]">
-      <Box>
+      <Container>
         <Skeleton rows={rows} />
-      </Box>
+      </Container>
       <Footer />
     </main>
   );
