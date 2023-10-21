@@ -1,15 +1,17 @@
 "use client";
 
 // imports
-import { KeyboardEvent, useEffect } from "react";
+import { useEffect } from "react";
 
 // Dependencies
 import { useSearchParams, useRouter } from "next/navigation";
-import { Root, Trigger, List } from "@radix-ui/react-tabs";
+import { Root, Trigger, List, Content } from "@radix-ui/react-tabs";
 
 // Components
-import { AdminStoreProvider } from "@/adminStore";
 import UserList from "./UserList";
+
+// Store
+import { StoreProvider } from "@/store";
 
 export default function Tabs({ users }: { users: User[] }) {
   const router = useRouter();
@@ -30,12 +32,6 @@ export default function Tabs({ users }: { users: User[] }) {
     router.push(`?tab=${tabId}`);
   }
 
-  function handleKeyUp(event: KeyboardEvent<HTMLButtonElement>, tabId: string) {
-    if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-      updateQueryParams(tabId);
-    }
-  }
-
   useEffect(() => {
     if (tab === "members" || !tab) router.prefetch(`?tab=groups`);
     if (tab === "groups") router.prefetch(`?tab=members`);
@@ -45,6 +41,7 @@ export default function Tabs({ users }: { users: User[] }) {
     <Root
       className="flex flex-col items-start w-full h-full rounded-md"
       defaultValue={tab || "members"}
+      onValueChange={(value) => updateQueryParams(value)}
     >
       <List
         className="w-full flex justify-between rounded-t-md mb-4"
@@ -56,17 +53,20 @@ export default function Tabs({ users }: { users: User[] }) {
             key={tab.id}
             className="flex justify-center items-center flex-1 rounded-[4px] px-1 py-2 text-sm text-[var(--tab-text-color)] font-medium transition-colors ease-out hover:text-[var(--tab-selected-text)] tab-focus"
             value={tab.id}
-            onClick={() => updateQueryParams(tab.id)}
-            onKeyUp={(event) => handleKeyUp(event, tab.id)}
           >
             {tab.label}
           </Trigger>
         ))}
       </List>
 
-      <AdminStoreProvider>
-        <UserList users={users} />
-      </AdminStoreProvider>
+      <StoreProvider>
+        <Content value="members" className="w-full space-y-1">
+          <UserList users={users} />
+        </Content>
+        <Content value="groups" className="w-full space-y-1">
+          <UserList users={users} readonly />
+        </Content>
+      </StoreProvider>
     </Root>
   );
 }
