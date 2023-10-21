@@ -32,7 +32,7 @@ const Item = ({ user, isAdmin, readonly }: UserListItemProps) => {
     <li
       role="listitem"
       tabIndex={0}
-      aria-label={`${user.first} ${user.last}. ${user.role}.`}
+      aria-label={`${user.first} ${user.last} ${user.role}.`}
       className={clsx(
         "w-full flex items-center px-2 py-1 group listitem-focus",
         !readonly && "md:hover:bg-[var(--row-hover)]"

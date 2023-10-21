@@ -66,7 +66,7 @@ export default function Tabs({ users }: { users: User[] }) {
         ))}
       </List>
 
-      <Content value="members" className="w-full ">
+      <Content value="members" className="w-full tab-content-focus">
         <UserList title="Members">
           {users.length ? (
             users.map((user) => (
@@ -81,7 +81,7 @@ export default function Tabs({ users }: { users: User[] }) {
           )}
         </UserList>
       </Content>
-      <Content value="groups" className="w-full ">
+      <Content value="groups" className="w-full tab-content-focus">
         <UserList title="Admins">
           {admins.length ? (
             admins.map((user) => (

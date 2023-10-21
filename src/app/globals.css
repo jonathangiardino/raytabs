@@ -44,6 +44,10 @@ main {
   @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] focus-visible:rounded-[2px] data-[state=active]:bg-[var(--tab-selected)] data-[state=active]:text-[var(--tab-selected-text)];
 }
 
+.tab-content-focus {
+  @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] focus-visible:rounded-[2px];
+}
+
 .empty-state-focus {
   @apply focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--tab-selected)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--box-bg)] focus-visible:rounded-[2px] focus-visible:bg-[var(--row-hover)];
 }
